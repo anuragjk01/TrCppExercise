@@ -72,11 +72,11 @@ void atg::atgBaseClass::logger( std::string msg )
 	std::ofstream fout;
 
 	if( this->action == TG_ACTION_CONSOLE ){
-		std::cout<< "[" << this->trigger <<"]";
+		std::cout<< "[" << this->trigger <<"] ";
 		std::cout<< msg << std::endl;
 	}else if( this->action == TG_ACTION_FILE ){
 		fout.open( LOG_FILE_NAME, std::ios::app );
-		fout << "[" << this->trigger <<"]";
+		fout << "[" << this->trigger <<"] ";
 		fout << msg << std::endl;
 		fout.close();
 	}
@@ -137,21 +137,28 @@ void atg::atgCmdClass::start()
 \*******************************************/
 void atg::atgCmdClass::run()
 {
-	const std::string dataList[8] = {
-		"Pineapple",
-		"Mango",
-		"Apple",
-		"Banana",
-		"Cherry",
-		"Peach",
-		"Plum",
-		"Orange"
-	};
+	std::vector<std::string> dataList;
 
-	cache_init(3);
-	for(int i=0;i<8;i++){
-		cache_push(dataList[i]);
-		Poco::Thread::sleep(200);
+	dataList.push_back("Pineapple");
+	dataList.push_back("Orange");
+	dataList.push_back("Mango");
+	dataList.push_back("Apple");
+	dataList.push_back("Banana");
+	dataList.push_back("Cherry");
+	dataList.push_back("Peach");
+	dataList.push_back("Plum");
+	dataList.push_back("Grapes");
+	dataList.push_back("Kiwi");
+	dataList.push_back("Guava");
+	dataList.push_back("Jackfruit");
+	dataList.push_back("Tomato");
+	dataList.push_back("Papaya");
+	dataList.push_back("Strawberry");
+
+	cache_init(CACHE_SIZE);
+	for(auto itter: dataList){
+		cache_push(itter);
+		Poco::Thread::sleep(USER_UPDATE_INTERVEL);
 	}
 	cache_destroy();
 }

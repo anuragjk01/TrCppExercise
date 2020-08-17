@@ -18,6 +18,10 @@
 #define TIMER_CALLBACK_START_TIME		(0U)		/*ms*/
 #define TIMER_CALLBACK_END_TIME			(60000U)	/*ms*/
 
+#define USER_UPDATE_INTERVEL			(10000U)	/*ms*/
+
+#define CACHE_SIZE						(5U)
+
 #define LOG_FILE_NAME					"logfile"
 
 typedef enum{
