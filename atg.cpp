@@ -128,7 +128,7 @@ void atg::atgCmdClass::start()
 {
 	Poco::Thread thread;
 
-	thread.start(this);
+	thread.start(*this);
 	thread.join();
 }
 
